@@ -18,6 +18,10 @@ public:
     int removeStones(vector<vector<int>>& stones) {
        int n=stones.size();
     vector<vector<int>>grid(n);
+    //The main crux of the problem is that here we need to find connected components and in a single connected component we will have one node which we 
+    //don't have to count. Our goal is to maximise the no. of stones to remove from the system.
+    
+    //we can find solution with union find method.
     for(int i=0;i<n-1;i++)
     {
         int x1,y1;
