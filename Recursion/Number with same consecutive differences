@@ -1,0 +1,31 @@
+https://leetcode.com/problems/numbers-with-same-consecutive-differences/
+
+class Solution {
+public:
+    vector<int> ans;
+    void solve(long long d,int c,int n,int k){
+        if(c==n){
+            //for handling duplicates when k is 0 as rem-k and rem+k will give same value
+            if(ans.size()==0||ans.back()!=d)
+                 ans.push_back(d);
+            
+            
+            return;
+           
+        }
+        //find the last digit
+        long long rem = d%10;
+        if(rem+k<10){
+            solve(d*10+(k+rem),c+1,n,k);
+        } 
+        if(rem-k>=0){
+            solve(d*10+rem-k,c+1,n,k);
+        }
+    }
+    vector<int> numsSameConsecDiff(int n, int k) {
+        for(int i=1;i<=9;i++){
+            solve(i,1,n,k);
+        }
+        return ans;
+    }
+};
